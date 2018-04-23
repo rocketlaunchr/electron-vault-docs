@@ -1,0 +1,687 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Electron Vault API</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;info&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="info">info</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#how-it-works" class="toc-h1 toc-link" data-title="how-it-works">How It Works</a>
+          </li>
+          <li>
+            <a href="#security-features" class="toc-h1 toc-link" data-title="security-features">Security Features</a>
+          </li>
+          <li>
+            <a href="#preparation" class="toc-h1 toc-link" data-title="preparation">Preparation</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#recommendations" class="toc-h2 toc-link" data-title="recommendations">Recommendations</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#development-advice" class="toc-h1 toc-link" data-title="development-advice">Development Advice</a>
+          </li>
+          <li>
+            <a href="#deployment-advice" class="toc-h1 toc-link" data-title="deployment-advice">Deployment Advice</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#windows" class="toc-h2 toc-link" data-title="windows">Windows</a>
+                  </li>
+                  <li>
+                    <a href="#macos" class="toc-h2 toc-link" data-title="macos">macOS</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#warnings" class="toc-h1 toc-link" data-title="warnings">Warnings</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#api-documentation" class="toc-h1 toc-link" data-title="api-documentation">API Documentation</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-launcher-application" class="toc-h2 toc-link" data-title="create-launcher-application">Create Launcher Application</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#license" class="toc-h1 toc-link" data-title="license">License</a>
+          </li>
+          <li>
+            <a href="#terms-of-service" class="toc-h1 toc-link" data-title="terms-of-service">Terms of Service</a>
+          </li>
+          <li>
+            <a href="#questions" class="toc-h1 toc-link" data-title="questions">Questions</a>
+          </li>
+      </div>
+        <ul class="toc-footer">
+            <li><a href='https://rocketlaunchr.cloud'>Sign Up for an API Token</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Electron.js is an amazing open-source project. It allows a single team of javascript/Node.js developers to create rich cross-platform Desktop applications.</p>
+
+<p>Unfortunately, it&#39;s <a href="https://github.com/electron/electron/issues/3041">not possible to secure your source code</a>. This also means that sensitive credentials are fully exposed. These could be:</p>
+
+<ul>
+<li>REST API credentials</li>
+<li>OAuth credentials</li>
+<li>Passwords</li>
+<li>URLs not intended to be known to the public (i.e. private backend API endpoints)</li>
+<li>Any Keys and Secrets</li>
+</ul>
+
+<p>For applications that heavily rely on communicating with a backend service, electron apps pose another layer of security concerns. It&#39;s very challenging to prove to your server that the client is your electron application with no unauthorized alterations. Furthermore, since network communication is easily observable, any communication your application does can be replicated with a simple REST client.</p>
+
+<p>Electron Vault can be used to solve this issue.</p>
+
+<p><a href="https://medium.com/@rocketlaunchr.cloud/introducing-electron-vault-d09ade2c2020">Read the blog</a> for further details.</p>
+<h1 id='how-it-works'>How It Works</h1>
+<p>Electron Vault creates a cross-platform launcher application which sits alongside your electron application. Instead of the user directly launching your electron application, they will instead run the launcher.</p>
+
+<p>The launcher will scan all the files (including your ASAR file) for tampering. You must provide a list of files and their md5 hash for this feature.</p>
+
+<p>It will then launch your application and pass your secrets as environment variables. Upon loading, you can check for the values. If they don&#39;t exist, you can gracefully exit after displaying a message.</p>
+
+<p>All command line parameters to the launcher will be passed as command line parameters to your electron application.</p>
+<h1 id='security-features'>Security Features</h1>
+<p>There are 2 security features in action.</p>
+
+<p>As you probably know, all strings are hardcoded in the actual binary itself. You can easily access them using a hex editor or the <code>strings</code> program that comes with Unix based operating systems such as Linux and macOS. In fact, just open a terminal and run <code>strings &lt;executable path&gt;</code> on your favorite applications to view all the embedded strings. For macOS, you may have to right-click and click &quot;Show Package Content&quot;.</p>
+
+<p>What Electron Vault does is stores your secrets in an encrypted form which then gets dynamically converted back to the original at runtime. That way, the original secret is not baked into the binary.</p>
+
+<p>The second (and most important) feature will be kept secret for your application&#39;s protection.</p>
+<h1 id='preparation'>Preparation</h1>
+<p>You will need an API key which you can obtain from creating a <a href="https://rocketlaunchr.cloud">rocketlaunchr.cloud</a> account.</p>
+
+<p>You will need to package your source code into an <a href="https://electronjs.org/docs/tutorial/application-packaging">ASAR file</a>. This step is required.</p>
+
+<p>You will need to compile a list of (ideally) all files that will be static so each file will have a stable md5 hash. This must be done separately for all your target operating systems (eg Windows, macOS and Linux).</p>
+
+<blockquote>
+<p>For macOS:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>electron/Electron.app/Contents/Resources/
+  └── app.asar
+  └── electron.asar
+
+</code></pre>
+<blockquote>
+<p>For Windows/Linux:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>electron/resources/
+  └── app.asar
+  └── electron.asar
+</code></pre>
+<p>At an absolute minimum, the md5 is required for the <code>app.asar</code> file and the <code>electron.asar</code> file.
+It is a <strong>de-facto requirement</strong> that you also obtain the md5 of the actual executable file that the user would ordinarily execute. This obviously differs based on the operating system.</p>
+
+<p>All files are relative to:</p>
+
+<table><thead>
+<tr>
+<th>OS</th>
+<th>Root Path</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mac</td>
+<td>/Contents</td>
+</tr>
+<tr>
+<td>win</td>
+<td>/</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>/</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+For macOS, click "Show Package Content" after right-clicking the app bundle file to view the directory structure.
+</aside>
+<h2 id='recommendations'>Recommendations</h2>
+<p>You will need to uglify your javascript and Node.js code. Do everything you can to obfuscate your code. </p>
+
+<aside class="success">
+Electron Vault is used after you have finished development and prior to the distribution stage. This is because you need to obtain the md5 hash of certain files.
+</aside>
+<h1 id='development-advice'>Development Advice</h1>
+<p>Since the launcher passes your secrets as environment variables, you should load them into a separate variable and then immediately clear them.</p>
+
+<p>During local development, when you don&#39;t have the launcher present, pass the environment variables yourself directly.</p>
+
+<p>It is imperative that you never expose the <strong>DevTools</strong> when your application is in production.</p>
+
+<p>This includes immediately quitting your application if the command line parameters <code>--remote-debugging-port</code> or <code>--inspect</code> are present. See <a href="https://github.com/electron/electron/issues/10445">generally here</a> and <a href="https://www.sitepoint.com/debugging-electron-application/">here</a>.</p>
+
+<aside class="warning">
+Be careful of spawning child processes. Child processes will inherit the parent application's environment variables. This could occur when you launch another application from within your application.
+</aside>
+<h1 id='deployment-advice'>Deployment Advice</h1>
+<p>After <a href="https://electronjs.org/docs/tutorial/application-packaging">packaging your application</a>, there are some extra steps that should be performed.</p>
+
+<aside class="notice">The generated launcher must be placed in the same root path as the electron application.</aside>
+<h2 id='windows'>Windows</h2>
+<p>It is recommended that you change the launcher&#39;s icon to something more suitable. You can find <a href="https://github.com/electron/rcedit">guidance here</a>. </p>
+<h2 id='macos'>macOS</h2>
+<p>To force the app bundle to start the launcher instead of the usual electron executable, you will need to <em>potentially</em> modify the <code>Info.plist</code> (text) file found in the <code>/Contents</code> directory.</p>
+
+<aside class="notice">You may have to right-click the app bundle and click <strong>Show Package Content</strong>.</aside>
+<pre class="highlight plaintext"><code>    &lt;key&gt;CFBundleExecutable&lt;/key&gt;
+    &lt;string&gt;launcher&lt;/string&gt;
+</code></pre>
+<p>You can change the string that corresponds to the <code>CFBundleExecutable</code> key to the name of the launcher file.</p>
+<h1 id='warnings'>Warnings</h1>
+<p>Electron Vault will happily generate a Linux launcher application. Since Linux is open-source, it is possible that someone might create a spurious alteration to the kernel in order to intercept the secrets when they are transferred <em>via</em> environment variables. For this reason, use Electron Vault at your own risk.</p>
+
+<p>If you must have a Linux version of your electron application, then consider a different set of credentials to Windows/macOS so your backend service can invalidate them if they are found to be compromised. </p>
+
+<aside class="warning">There is no foolproof methodology to 100% secure your credentials. Electron Vault should make it substantially harder for a talented but unscrupulous individual or team to discover your secrets. Please refer to the License agreement for further details.</aside>
+<h1 id='authentication'>Authentication</h1>
+<p>Electron Vault uses an API token to prevent abuse of service.</p>
+
+<p>You can obtain a <strong>FREE</strong> API Token from <a href="https://rocketlaunchr.cloud">rocketlaunchr.cloud</a>.</p>
+
+<p>Electron Vault expects the API Token to be included in all API requests as a query string parameter. It should look like this:</p>
+
+<p><code>?api_token=meowmeowmeow</code></p>
+
+<aside class="notice">
+You must replace <code>meowmeowmeow</code> with your personal API token.
+</aside>
+<h1 id='api-documentation'>API Documentation</h1><h2 id='create-launcher-application'>Create Launcher Application</h2>
+<blockquote>
+<p>The Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"launcher_file_name"</span><span class="p">:</span><span class="s2">"launcher"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"app_file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"electron-quick-start"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"app_human_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my app"</span><span class="p">,</span><span class="w">
+
+    </span><span class="s2">"linux"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+
+    </span><span class="s2">"secrets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"key1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secret1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"key2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secret2"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+
+    </span><span class="s2">"app_asar_md5"</span><span class="p">:</span><span class="w"> </span><span class="s2">"946733973687a4c53a7ac7c01b6223d7"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"electron_asar_md5"</span><span class="p">:</span><span class="s2">"4a934f2e168eabadf26a0f56726d7362"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"custom_md5"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"mac:MacOS/electron-quick-start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27ba4a7063de580efa42382f88e253be"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+
+    </span><span class="s2">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"ERROR_MESSAGE_UNKNOWN"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Something went wrong."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ERROR_MESSAGE_CORRUPT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The application has been tampered with."</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"encryption_complexity"</span><span class="p">:</span><span class="mi">5</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"signed_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://download-url.com"</span><span class="w">
+  </span><span class="s2">"archive_size_kb"</span><span class="p">:</span><span class="w"> </span><span class="mi">3015</span><span class="w"> 
+  </span><span class="s2">"mac_size_kb"</span><span class="p">:</span><span class="w"> </span><span class="mi">9710</span><span class="w">
+  </span><span class="s2">"win_size_kb"</span><span class="p">:</span><span class="w"> </span><span class="mi">9710</span><span class="w">
+  </span><span class="s2">"linux_size_kb"</span><span class="p">:</span><span class="w"> </span><span class="mi">9710</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint will create a Windows, macOS and possibly Linux launcher application, and then provide the url to download it.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://api.rocketlaunchr.cloud/electron-vault</code></p>
+<h3 id='json-body-parameters'>JSON Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>launcher_file_name</td>
+<td>false</td>
+<td>launcher</td>
+<td>If set to true, the result will also include cats.</td>
+</tr>
+<tr>
+<td>app_file_name</td>
+<td>true</td>
+<td>-</td>
+<td>The filename of the electron application. Don&#39;t provide the &#39;.exe&#39;</td>
+</tr>
+<tr>
+<td>app_human_name</td>
+<td>true</td>
+<td>-</td>
+<td>See below</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>false</td>
+<td>false</td>
+<td>Sets whether a Linux launcher will be built</td>
+</tr>
+<tr>
+<td>secrets</td>
+<td>true</td>
+<td>-</td>
+<td>The keys for the secrets will be the environment variable keys</td>
+</tr>
+<tr>
+<td>app_asar_md5</td>
+<td>true</td>
+<td>-</td>
+<td>The md5 hash of the app.asar file</td>
+</tr>
+<tr>
+<td>electron_asar_md5</td>
+<td>false</td>
+<td>-</td>
+<td>The md5 hash of the electron.asar file</td>
+</tr>
+<tr>
+<td>custom_md5</td>
+<td>false</td>
+<td>-</td>
+<td>See tamper detection below</td>
+</tr>
+<tr>
+<td>messages</td>
+<td>false</td>
+<td>-</td>
+<td>See below</td>
+</tr>
+<tr>
+<td>encryption_complexity</td>
+<td>true</td>
+<td>-</td>
+<td>See below</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+Remember — the url provided will expire after a period of <strong>24 hours</strong>.
+</aside>
+<h3 id='messages'>Messages</h3>
+<blockquote>
+<p>The default alert messages:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ERROR_MESSAGE_UNKNOWN"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An unexpected error occurred."</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"ERROR_MESSAGE_CORRUPT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The application is corrupted."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>If the launcher detects that your application has been tampered with, it will display a message. It can be customized by setting the <code>ERROR_MESSAGE_CORRUPT</code> key.</p>
+
+<p>For any other errors such as not being able to launch your electron application, you can customize the message by setting the <code>ERROR_MESSAGE_UNKNOWN</code> key.</p>
+<h3 id='app-human-name'>App Human Name</h3>
+<p>If the launcher needs to show a modal alert to display an error message, this setting sets the alert&#39;s title bar.</p>
+
+<aside class="notice">
+It should be set to what your users know your application by.
+</aside>
+<h3 id='understanding-the-encryption-complexity-n'>Understanding the encryption complexity (n)</h3>
+<p>The secrets are encrypted using an encryption algorithm. The higher the encryption complexity, the harder it is to &quot;crack&quot;. Generally speaking, as <code>n</code> increases, so does the launcher&#39;s filesize. There is a random element to the encryption, so it is not always the case.</p>
+
+<table><thead>
+<tr>
+<th>n</th>
+<th>1</th>
+<th>5</th>
+<th>10</th>
+<th>15</th>
+<th>20</th>
+<th>25</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>kB</td>
+<td>1,697</td>
+<td>3,015</td>
+<td>3,019</td>
+<td>4,047</td>
+<td>6,213</td>
+<td>5,305</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>n</th>
+<th>30</th>
+<th>35</th>
+<th>40</th>
+<th>45</th>
+<th>50</th>
+<th>100</th>
+<th>150</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>kB</td>
+<td>5,671</td>
+<td>5,802</td>
+<td>5,939</td>
+<td>6,125</td>
+<td>6,811</td>
+<td>7,836</td>
+<td>8,476</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>n</th>
+<th>200</th>
+<th>250</th>
+<th>300</th>
+<th>350</th>
+<th>400</th>
+<th>450</th>
+<th>500</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>kB</td>
+<td>9,171</td>
+<td>9,581</td>
+<td>9,710</td>
+<td>10,248</td>
+<td>10,614</td>
+<td>10,762</td>
+<td>10,908</td>
+</tr>
+</tbody></table>
+
+<p><strong>Average filesize after 10 runs for a given <code>n</code></strong></p>
+<h3 id='tamper-detection'>Tamper Detection</h3><pre class="highlight json tab-json"><code><span class="w">  </span><span class="s2">"custom_md5"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"mac:MacOS/electron-quick-start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27ba4a7063de580efa42382f88e253be"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"win:electron-quick-start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2342342ba4a7063de580efa42382f99"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"linux:electron-quick-start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5346348ba4a7063de580efa42382f99"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span></code></pre>
+<p>Before the launcher attempts to run your application, it will scan the specified files for a given operating system and compare their md5 hash. </p>
+
+<p>This can be set by configuring the <code>custom_md5</code> which takes a JSON object.</p>
+
+<p>The key must have a prefix of <code>win:</code>, <code>mac:</code> or <code>linux:</code> followed by the file path.
+The value is the md5 hash as a string.</p>
+
+<p>All files paths are relative to:</p>
+
+<table><thead>
+<tr>
+<th>OS</th>
+<th>Root Path</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mac</td>
+<td>/Contents</td>
+</tr>
+<tr>
+<td>win</td>
+<td>/</td>
+</tr>
+<tr>
+<td>linux</td>
+<td>/</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+For macOS, click "Show Package Content" after right-clicking the app bundle file to view the directory structure.
+</aside>
+
+<aside class="warning">
+If the file does not exist or has a different md5 hash, the launcher will gracefully exit.
+</aside>
+<h1 id='license'>License</h1>
+<p>Electron Vault is provided with a modified MIT license (mMIT). It has all the freedoms that the standard MIT license has but with the additional constraint that the tool is not used intentionally for military purposes.</p>
+<h1 id='terms-of-service'>Terms of Service</h1>
+<p>Electron Vault is free to use. As such, I will be hosting it on a super-tiny instance to cut costs. Please be patient at times of high demand, as compiling a custom launcher application is CPU and memory intensive.</p>
+
+<p>The service is governed by &quot;fair use&quot; provisions. Please use the API sparingly.</p>
+
+<p>The only request I make is that you provide feedback on your experiences. This includes advice on how to improve the service.</p>
+<h1 id='questions'>Questions</h1>
+<p>If you have any further questions, feel free to email <a href="mailto:rocketlaunchr-cto@gmail.com">rocketlaunchr-cto@gmail.com</a>. Having said that I’m sure you will appreciate that I will ignore any questions that ask for further details regarding the security features.</p>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="info">info</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
