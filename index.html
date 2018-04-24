@@ -391,7 +391,7 @@ Be careful of spawning child processes. Child processes will inherit the parent 
 <h2 id='macos'>macOS</h2>
 <p>To force the app bundle to start the launcher instead of the usual electron executable, you will need to <em>potentially</em> modify the <code>Info.plist</code> (text) file found in the <code>/Contents</code> directory.</p>
 
-<aside class="notice">You may have to right-click the app bundle and click <strong>Show Package Content</strong>.</aside>
+<aside class="notice">You may have to right-click the app bundle and click <strong>Show Package Content</strong>. After modifying the Info.plist file, you may need to rename and app bundle and change it back to see the changes.</aside>
 <pre class="highlight plaintext"><code>    &lt;key&gt;CFBundleExecutable&lt;/key&gt;
     &lt;string&gt;launcher&lt;/string&gt;
 </code></pre>
@@ -447,11 +447,11 @@ You must replace <code>meowmeowmeow</code> with your personal API token.
 <p>The Response Body:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"signed_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://download-url.com"</span><span class="w">
-  </span><span class="s2">"archive_size_kb"</span><span class="p">:</span><span class="w"> </span><span class="mi">3015</span><span class="w"> 
-  </span><span class="s2">"mac_size_kb"</span><span class="p">:</span><span class="w"> </span><span class="mi">9710</span><span class="w">
-  </span><span class="s2">"win_size_kb"</span><span class="p">:</span><span class="w"> </span><span class="mi">9710</span><span class="w">
-  </span><span class="s2">"linux_size_kb"</span><span class="p">:</span><span class="w"> </span><span class="mi">9710</span><span class="w">
+    </span><span class="s2">"signed_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://download-url.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"archive_size_kb"</span><span class="p">:</span><span class="w"> </span><span class="mi">3015</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mac_size_kb"</span><span class="p">:</span><span class="w"> </span><span class="mi">9710</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"win_size_kb"</span><span class="p">:</span><span class="w"> </span><span class="mi">9710</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"linux_size_kb"</span><span class="p">:</span><span class="w"> </span><span class="mi">9710</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint will create a Windows, macOS and possibly Linux launcher application, and then provide the url to download it.</p>
@@ -625,7 +625,7 @@ It should be set to what your users know your application by.
 <p><strong>Average filesize after 10 runs for a given <code>n</code></strong></p>
 <h3 id='tamper-detection'>Tamper Detection</h3><pre class="highlight json tab-json"><code><span class="w">  </span><span class="s2">"custom_md5"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"mac:MacOS/electron-quick-start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27ba4a7063de580efa42382f88e253be"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"win:electron-quick-start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2342342ba4a7063de580efa42382f99"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"win:electron-quick-start.exe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2342342ba4a7063de580efa42382f99"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"linux:electron-quick-start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5346348ba4a7063de580efa42382f99"</span><span class="w">
   </span><span class="p">},</span><span class="w">
 </span></code></pre>
