@@ -391,7 +391,7 @@ Be careful of spawning child processes. Child processes will inherit the parent 
 <h2 id='macos'>macOS</h2>
 <p>To force the app bundle to start the launcher instead of the usual electron executable, you will need to <em>potentially</em> modify the <code>Info.plist</code> (text) file found in the <code>/Contents</code> directory.</p>
 
-<aside class="notice">You may have to right-click the app bundle and click <strong>Show Package Content</strong>. After modifying the Info.plist file, you may need to rename and app bundle and change it back to see the changes.</aside>
+<aside class="notice">You may have to right-click the app bundle and click <strong>Show Package Content</strong>. After modifying the Info.plist file, you may need to rename the app bundle and change it back to see the changes.</aside>
 <pre class="highlight plaintext"><code>    &lt;key&gt;CFBundleExecutable&lt;/key&gt;
     &lt;string&gt;launcher&lt;/string&gt;
 </code></pre>
