@@ -6,6 +6,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='https://rocketlaunchr.cloud'>Sign Up for an API Token</a>
+  - © 2018 PJ Engineering and Business Solutions Pty Ltd
 
 search: true
 ---
@@ -88,7 +89,7 @@ win | /
 linux | / 
 
 <aside class="notice">
-For macOS, click "Show Package Content" after right-clicking the app bundle file to view the directory structure.
+For macOS, click "Show Package Content" after right-clicking the app bundle to view the directory structure.
 </aside>
 
 ## Recommendations
@@ -298,7 +299,7 @@ win | /
 linux | / 
 
 <aside class="notice">
-For macOS, click "Show Package Content" after right-clicking the app bundle file to view the directory structure.
+For macOS, click "Show Package Content" after right-clicking the app bundle to view the directory structure.
 </aside>
 
 <aside class="warning">
