@@ -128,7 +128,7 @@ It is recommended that you change the launcher's icon to something more suitable
 
 To force the app bundle to start the launcher instead of the usual electron executable, you will need to *potentially* modify the `Info.plist` (text) file found in the `/Contents` directory.
 
-<aside class="notice">You may have to right-click the app bundle and click <strong>Show Package Content</strong>. After modifying the Info.plist file, you may need to rename and app bundle and change it back to see the changes.</aside>
+<aside class="notice">You may have to right-click the app bundle and click <strong>Show Package Content</strong>. After modifying the Info.plist file, you may need to rename the app bundle and change it back to see the changes.</aside>
 
 ```info
     <key>CFBundleExecutable</key>
