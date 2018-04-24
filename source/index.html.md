@@ -128,7 +128,7 @@ It is recommended that you change the launcher's icon to something more suitable
 
 To force the app bundle to start the launcher instead of the usual electron executable, you will need to *potentially* modify the `Info.plist` (text) file found in the `/Contents` directory.
 
-<aside class="notice">You may have to right-click the app bundle and click <strong>Show Package Content</strong>.</aside>
+<aside class="notice">You may have to right-click the app bundle and click <strong>Show Package Content</strong>. After modifying the Info.plist file, you may need to rename and app bundle and change it back to see the changes.</aside>
 
 ```info
     <key>CFBundleExecutable</key>
@@ -196,11 +196,11 @@ You must replace <code>meowmeowmeow</code> with your personal API token.
 
 ```json
 {
-  "signed_url": "https://download-url.com"
-  "archive_size_kb": 3015 
-  "mac_size_kb": 9710
-  "win_size_kb": 9710
-  "linux_size_kb": 9710
+    "signed_url": "https://download-url.com",
+    "archive_size_kb": 3015,
+    "mac_size_kb": 9710,
+    "win_size_kb": 9710,
+    "linux_size_kb": 9710
 }
 ```
 
@@ -277,7 +277,7 @@ kB| 9,171 | 9,581 | 9,710 | 10,248 | 10,614 | 10,762 | 10,908
 ```json
   "custom_md5": {
     "mac:MacOS/electron-quick-start": "27ba4a7063de580efa42382f88e253be",
-    "win:electron-quick-start": "2342342ba4a7063de580efa42382f99",
+    "win:electron-quick-start.exe": "2342342ba4a7063de580efa42382f99",
     "linux:electron-quick-start": "5346348ba4a7063de580efa42382f99"
   },
 ```
