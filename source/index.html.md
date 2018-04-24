@@ -89,7 +89,7 @@ win | /
 linux | / 
 
 <aside class="notice">
-For macOS, click "Show Package Content" after right-clicking the app bundle to view the directory structure.
+For macOS, click "Show Package Content" after right-clicking the app bundle to view the directory structure. The executable can be found in the /Contents/MacOS directory.
 </aside>
 
 ## Recommendations
