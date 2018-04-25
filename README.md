@@ -16,9 +16,9 @@ Electron Vault can be used to solve this issue.
 
 **Further Reading**
 
-[Blog Post](https://medium.com/@rocketlaunchr.cloud/introducing-electron-vault-d09ade2c2020)
-[Documentation](https://rocketlaunchr.github.io/electron-vault-docs/)
-rocketlaunchr.cloud - Obtain an API Token for free
+- [Blog Post](https://medium.com/@rocketlaunchr.cloud/introducing-electron-vault-d09ade2c2020)
+- [Documentation](https://rocketlaunchr.github.io/electron-vault-docs/)
+- [rocketlaunchr.cloud](https://rocketlaunchr.cloud) - Obtain an API Token for free
 
 
 
