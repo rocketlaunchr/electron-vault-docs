@@ -197,7 +197,7 @@ You must replace <code>meowmeowmeow</code> with your personal API token.
 
 ```json
 {
-    "signed_url": "https://download-url.com",
+    "download_url": "https://download-url.com",
     "archive_size_kb": 3015,
     "mac_size_kb": 9710,
     "win_size_kb": 9710,
@@ -237,8 +237,8 @@ Remember — the url provided will expire after a period of <strong>24 hours</st
 
 ```json
 {
-  "ERROR_MESSAGE_UNKNOWN": "An unexpected error occurred.", 
-  "ERROR_MESSAGE_CORRUPT": "The application is corrupted."
+    "ERROR_MESSAGE_UNKNOWN": "An unexpected error occurred.", 
+    "ERROR_MESSAGE_CORRUPT": "The application is corrupted."
 }
 ```
 
@@ -271,16 +271,16 @@ n | 200 | 250 | 300 | 350 | 400 | 450 | 500
 -- | -- | -- | -- | -- | -- | -- | --
 kB| 9,171 | 9,581 | 9,710 | 10,248 | 10,614 | 10,762 | 10,908
 
-**Average filesize after 10 runs for a given `n`**
+**Average file size after 10 runs for a given `n`**
 
 ### Tamper Detection
 
 ```json
-  "custom_md5": {
+"custom_md5": {
     "mac:MacOS/electron-quick-start": "27ba4a7063de580efa42382f88e253be",
     "win:electron-quick-start.exe": "2342342ba4a7063de580efa42382f99",
     "linux:electron-quick-start": "5346348ba4a7063de580efa42382f99"
-  },
+},
 ```
 
 Before the launcher attempts to run your application, it will scan the specified files for a given operating system and compare their md5 hash. 
@@ -306,10 +306,18 @@ For macOS, click "Show Package Content" after right-clicking the app bundle to v
 If the file does not exist or has a different md5 hash, the launcher will gracefully exit.
 </aside>
 
+# Privacy
+
+PJ Engineering and Business Solutions Pty. Ltd. (rocketlaunchr.cloud) does not retain your secrets for any purposes other than creating the launcher application. The moment the launcher application is compiled and uploaded for download, your secrets are irrecoverably deleted.
+
+If you have any privacy concerns, there are 2 solutions.
+
+- You can use Electron Vault to encrypt a key, which itself does not constitute a valuable secret. This key can then be used by your electron application to decrypt valuable secrets which are stored within your application.
+- You can purchase a Desktop CLI version of Electron Vault which will build the launcher application without transmitting your secrets externally.
+
 # License
 
-Electron Vault is provided with a modified MIT license (mMIT). It has all the freedoms that the standard MIT license has but with the additional constraint that the tool is not used intentionally for military purposes.
-
+Electron Vault is provided with a [modified MIT license](https://rocketlaunchr.cloud/license/mmit) (mMIT). It has all the freedoms of the standard MIT license, but with the additional constraint that the software not be knowingly used for military purposes.
 
 # Terms of Service
 
