@@ -321,7 +321,7 @@ Electron Vault is provided with a [modified MIT license](https://rocketlaunchr.c
 
 # Terms of Service
 
-Electron Vault is free to use. As such, I will be hosting it on a super-tiny instance to cut costs. Please be patient at times of high demand, as compiling a custom launcher application is CPU and memory intensive.
+Electron Vault is free to use. As such, I will be hosting it on a super-tiny instance to cut costs. Please be patient at times of high demand, as compiling a custom launcher application is CPU and memory intensive. The service will only process 2-4 requests concurrently. If your request is placed in a queue, it may take up to 10 minutes to process.
 
 The service is governed by "fair use" provisions. Please use the API sparingly.
 
