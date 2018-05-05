@@ -379,6 +379,13 @@ Electron Vault is used after you have finished development and prior to the dist
 
 <p>During local development, when you don&#39;t have the launcher present, pass the environment variables yourself directly.</p>
 
+<blockquote>
+<p>Sample Node.js code:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code>    <span class="nx">win</span><span class="p">.</span><span class="nx">webContents</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"devtools-opened"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> 
+        <span class="nx">win</span><span class="p">.</span><span class="nx">webContents</span><span class="p">.</span><span class="nx">closeDevTools</span><span class="p">();</span> 
+    <span class="p">});</span>
+</code></pre>
 <p>It is imperative that you never expose the <strong>DevTools</strong> when your application is in production.</p>
 
 <p>This includes immediately quitting your application if the command line parameters <code>--remote-debugging-port</code> or <code>--inspect</code> are present. See <a href="https://github.com/electron/electron/issues/10445">generally here</a> and <a href="https://www.sitepoint.com/debugging-electron-application/">here</a>.</p>
