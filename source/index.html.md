@@ -106,6 +106,14 @@ Since the launcher passes your secrets as environment variables, you should load
 
 During local development, when you don't have the launcher present, pass the environment variables yourself directly.
 
+> Sample Node.js code:
+
+```javascript
+    win.webContents.on("devtools-opened", () => { 
+        win.webContents.closeDevTools(); 
+    });
+```
+
 It is imperative that you never expose the **DevTools** when your application is in production.
 
 This includes immediately quitting your application if the command line parameters `--remote-debugging-port` or `--inspect` are present. See [generally here](https://github.com/electron/electron/issues/10445) and [here](https://www.sitepoint.com/debugging-electron-application/).
