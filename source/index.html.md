@@ -5,7 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - info
 
 toc_footers:
-  - <a href='https://rocketlaunchr.cloud'>Sign Up for an API Token</a>
+  - <a href='https://rocketlaunchr.cloud/settings#/api'>Sign Up for an API Token</a>
   - © 2018 PJ Engineering and Business Solutions Pty Ltd
 
 search: true
